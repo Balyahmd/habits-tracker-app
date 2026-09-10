@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+/* Tema disimpan sebagai class `dark` di elemen akar, bukan mengikuti setelan
+   sistem, karena pilihan temanya ada di halaman profil. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Seluruh nilai di bawah berasal dari panduan desain UI bagian 4, 5, dan 6.
+   Komponen memakai nama ini, bukan menulis ulang nilainya. */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #131316;
+  --color-ink-soft: #6b6b76;
+  --color-surface: #ffffff;
+  --color-surface-blur: #ffffffd9;
+  --color-line: #eaeaef;
+
+  --color-ink-dark: #f4f4f6;
+  --color-ink-soft-dark: #a0a0ad;
+  --color-surface-dark: #1a1a20;
+  --color-surface-blur-dark: #1a1a20d9;
+  --color-line-dark: #2a2a33;
+
+  --color-lime: #b7e14f;
+  --color-lime-tint: #f0f9dc;
+  --color-violet: #7c5cff;
+  --color-violet-tint: #efeaff;
+  --color-amber: #f5a524;
+  --color-amber-tint: #fef3d7;
+  --color-rose: #f04e4e;
+  --color-rose-tint: #fee7e7;
+
+  --radius-card: 24px;
+  --radius-input: 16px;
+
+  --shadow-card: 0 8px 30px rgba(17, 17, 26, 0.06);
+  --shadow-nav: 0 8px 30px rgba(17, 17, 26, 0.12);
+}
+
+/* Latar gradasi mesh dari panduan desain bagian 3. Dia menempel ke viewport
+   dan tidak ikut bergulir. */
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: #f2f1f5;
+  background-image:
+    radial-gradient(at 12% 8%, #fbd9e4 0px, transparent 55%),
+    radial-gradient(at 88% 4%, #ebd9ff 0px, transparent 50%),
+    radial-gradient(at 78% 88%, #c9b6f7 0px, transparent 55%),
+    radial-gradient(at 8% 92%, #fde2ce 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  color: var(--color-ink-dark);
+  background-color: #0e0e12;
+  background-image:
+    radial-gradient(at 12% 8%, #3a1f33 0px, transparent 55%),
+    radial-gradient(at 88% 4%, #2a1f45 0px, transparent 50%),
+    radial-gradient(at 78% 88%, #1f1b3a 0px, transparent 55%),
+    radial-gradient(at 8% 92%, #3a2a20 0px, transparent 50%);
+}
+
+/* Tombol ditekan mengecil ke 97 persen, panduan desain bagian 11 */
+button {
+  transition:
+    transform 0.2s ease-out,
+    background-color 0.2s ease-out,
+    color 0.2s ease-out;
+}
+
+button:active {
+  transform: scale(0.97);
+}

@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: habits-tracker
+    ports:
+      - "5173:5173"
+    volumes:
+      # Kode dari host ikut masuk supaya perubahan langsung terlihat
+      - .:/app
+      # Volume anonim ini menjaga node_modules milik container tidak tertimpa host
+      - /app/node_modules
+    # Polling untuk deteksi perubahan berkas diatur di vite.config.ts lewat
+    # server.watch.usePolling, bukan lewat environment variable
+    stdin_open: true
+    tty: true
