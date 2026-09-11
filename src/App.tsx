@@ -8,18 +8,27 @@ import EditHabitPage from "./pages/EditHabitPage";
 import StatsPage from "./pages/StatsPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { useProfile } from "./hooks/useProfile";
 
-function App() {
+type AppProps = {
+  dataWasCleared: boolean
+}
+
+
+function App({dataWasCleared} : AppProps) {
+
+  const {profile, saveProfile} = useProfile()
+
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<TodayPage />} />
+      <Route element={<Layout dataWasCleared={dataWasCleared} />}>
+        <Route index element={<TodayPage/>} />
         <Route path="habits" element={<HabitsPage />} />
         <Route path="habits/new" element={<NewHabitPage />} />
         <Route path="habits/:id" element={<HabitDetailPage />} />
         <Route path="habits/:id/edit" element={<EditHabitPage />} />
         <Route path="stats" element={<StatsPage />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route path="profile" element={<ProfilePage profile={profile} onSave={saveProfile}/>} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

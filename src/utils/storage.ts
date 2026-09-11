@@ -59,7 +59,25 @@ export function readProfile(): Profile | null {
     if (parsed === null || typeof parsed !== "object") {
       return null;
     }
-    return parsed;
+
+    if (typeof parsed.name !== "string") {
+      return null;
+    }
+
+    if (typeof parsed.birthDate !== "string") {
+      return null;
+    }
+
+    if (parsed.gender !== "male" && parsed.gender !== "female") {
+      return null;
+    }
+
+    return {
+      name: parsed.name,
+      birthDate: parsed.birthDate,
+      gender: parsed.gender,
+      photo: typeof parsed.photo === "string" ? parsed.photo : undefined,
+    };
   } catch (error) {
     return null;
   }
