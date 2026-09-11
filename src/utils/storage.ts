@@ -1,4 +1,3 @@
-import { parse } from "path";
 import type { Habit } from "../types/habit";
 import type { Profile } from "../types/profile";
 
