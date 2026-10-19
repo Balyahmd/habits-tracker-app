@@ -7,7 +7,7 @@ export function useProfile() {
 
   function saveProfile(nextProfile: Profile) {
     setProfile(nextProfile);
-    writeProfile(nextProfile);
+    return writeProfile(nextProfile)
   }
 
   return { profile, saveProfile };

@@ -7,7 +7,7 @@ export function useHabits() {
 
   function saveHabits(nextHabits: Habit[]) {
     setHabits(nextHabits);
-    writeHabits(nextHabits);
+    return writeHabits(nextHabits);
   }
   return { habits, saveHabits };
 }

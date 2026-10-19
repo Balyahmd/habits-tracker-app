@@ -31,11 +31,36 @@
   --color-rose: #f04e4e;
   --color-rose-tint: #fee7e7;
 
+  /* Tiga warna teks badge kategori. Nilainya diambil dari
+     mockup-daftar-habit.html, bukan dari palet panduan desain bagian 4, karena
+     warna aksen penuh tidak terbaca di atas tint-nya sendiri. Panduan desain
+     perlu memuat nilai ini. */
+  /* Jalur cincin progress di dalam kartu gelap, panduan desain bagian 7.4 */
+  --color-ring-track: #2a2a31;
+
+  --color-lime-ink: #5c7a16;
+  --color-violet-ink: #5b44c7;
+  --color-amber-ink: #9a6208;
+
   --radius-card: 24px;
   --radius-input: 16px;
+  /* Kotak harian di bar tujuh hari, panduan desain bagian 7.12 */
+  --radius-day: 8px;
 
   --shadow-card: 0 8px 30px rgba(17, 17, 26, 0.06);
   --shadow-nav: 0 8px 30px rgba(17, 17, 26, 0.12);
+
+  /* Sapuan cahaya yang melintas sekali saat seluruh habit hari ini selesai */
+  --animate-shine: shine 1200ms ease-out;
+
+  @keyframes shine {
+    from {
+      transform: translateX(-130%) skewX(-12deg);
+    }
+    to {
+      transform: translateX(280%) skewX(-12deg);
+    }
+  }
 }
 
 /* Latar gradasi mesh dari panduan desain bagian 3. Dia menempel ke viewport
@@ -62,6 +87,29 @@ body {
     radial-gradient(at 88% 4%, #2a1f45 0px, transparent 50%),
     radial-gradient(at 78% 88%, #1f1b3a 0px, transparent 55%),
     radial-gradient(at 8% 92%, #3a2a20 0px, transparent 50%);
+}
+
+/* Deretan yang bergulir mendatar tanpa scrollbar terlihat, panduan desain
+   bagian 7.5 */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sebagian orang menyetel sistemnya untuk mengurangi gerak, entah karena
+   mabuk gerak atau karena gangguan vestibular. Setelan itu dihormati. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* Tombol ditekan mengecil ke 97 persen, panduan desain bagian 11 */
